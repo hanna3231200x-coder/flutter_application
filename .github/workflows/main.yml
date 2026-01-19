@@ -1,0 +1,42 @@
+name: Flutter CI
+
+# บอกว่าให้ทำงานเมื่อเรา "push" โค้ดขึ้นไปที่ branch ชื่อ main หรือ master
+on:
+  push:
+    branches: [ "main", "master" ]
+  pull_request:
+    branches: [ "main", "master" ]
+
+jobs:
+  build:
+    # ใช้เครื่องคอมพิวเตอร์ของ GitHub (Ubuntu) ในการทำงาน
+    runs-on: ubuntu-latest
+
+    steps:
+      # 1. ดึงโค้ดจาก GitHub มาที่เครื่อง
+      - uses: actions/checkout@v3
+
+      # 2. ติดตั้ง Java (จำเป็นสำหรับสร้างแอป Android)
+      - name: Set up JDK 11
+        uses: actions/setup-java@v3
+        with:
+          java-version: '11'
+          distribution: 'adopt'
+
+      # 3. ติดตั้ง Flutter
+      - name: Set up Flutter
+        uses: subosito/flutter-action@v2
+        with:
+          flutter-version: '3.x' # หรือระบุเวอร์ชันที่คุณใช้
+
+      # 4. ดาวน์โหลดโปรแกรมเสริม (Packages) ของ Flutter
+      - name: Install dependencies
+        run: flutter pub get
+
+      # 5. ตรวจสอบโค้ด (ตามโจทย์ในลิงก์ที่ 2)
+      - name: Analyze code
+        run: flutter analyze
+
+      # 6. รันการทดสอบ (ตามโจทย์ในลิงก์ที่ 2)
+      - name: Run tests
+        run: flutter test

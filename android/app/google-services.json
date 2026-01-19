@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "332358249678",
+    "project_id": "pic24-89412",
+    "storage_bucket": "pic24-89412.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:332358249678:android:21746890cbf4eb0c39349f",
+        "android_client_info": {
+          "package_name": "pic.flutter.han"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyB6u2K2sq_akaqOyIVnbyIcuBugF8rZkMI"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
