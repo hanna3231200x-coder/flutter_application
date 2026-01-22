@@ -2,17 +2,16 @@ name: Flutter Build APK
 
 on:
   push:
-    branches: [ "main" ] # หรือชื่อ branch ที่คุณใช้
+    branches: [ "main" ]
 
 jobs:
   build:
     runs-on: ubuntu-latest
-
     steps:
-      - uses: actions/checkout@v3
+      - uses: actions/checkout@v4
       
       - name: Set up Java
-        uses: actions/setup-java@v3
+        uses: actions/setup-java@v4
         with:
           distribution: 'temurin'
           java-version: '17'
@@ -26,10 +25,11 @@ jobs:
         run: flutter pub get
 
       - name: Build APK
-        run: flutter build apk --release --no-tree-shake-icons --no-pub
+        # คำสั่งนี้จะสั่งให้มันสร้าง APK โดยไม่สนใจพวกรูปภาพหรือไอคอนที่หายไป
+        run: flutter build apk --release --no-tree-shake-icons
 
       - name: Upload APK
-        uses: actions/upload-artifact@v3
+        uses: actions/upload-artifact@v4
         with:
-          name: release-apk
+          name: my-app
           path: build/app/outputs/flutter-apk/app-release.apk
