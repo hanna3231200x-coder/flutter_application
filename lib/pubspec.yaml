@@ -11,8 +11,8 @@ dependencies:
     sdk: flutter
 
   # เพิ่ม Firebase 2 บรรทัดนี้ (ต้องเยื้อง 2 ช่องให้เท่ากับ http)
-  firebase_core: ^3.10.1
-  cloud_firestore: ^5.6.0
+  # firebase_core: ^3.10.1
+  # cloud_firestore: ^5.6.0
 
   http: ^0.13.6
   url_launcher: ^6.2.1
