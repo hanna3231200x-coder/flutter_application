@@ -58,7 +58,7 @@ class _FoodAppState extends State<FoodApp> {
   Widget build(BuildContext context) {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
-      title: 'Phakwalan App',
+      title: 'Phakwalan App No24',
       theme: ThemeData(
         primarySwatch: Colors.blue,
         useMaterial3: true, // ใช้ดีไซน์ใหม่สวยๆ
