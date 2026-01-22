@@ -18,8 +18,8 @@ dependencies:
   geolocator: ^14.0.2  # แก้ไขเวอร์ชันให้ถูกต้อง
   flutter_map: 5.0.0
   latlong2: ^0.9.1
-  firebase_core: ^3.10.1
-  cloud_firestore: ^5.6.0   # แก้เวอร์ชันให้เสถียรขึ้น
+  # firebase_core: ^3.10.1
+  # cloud_firestore: ^5.6.0
 
 dev_dependencies:
   flutter_test:
