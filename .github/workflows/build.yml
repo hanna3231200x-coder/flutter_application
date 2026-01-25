@@ -1,0 +1,34 @@
+name: Build and Release APK
+
+on:
+  push:
+    tags:
+      - 'v*'
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      # 1. ติดตั้ง Flutter
+      - uses: subosito/flutter-action@v2
+        with:
+          flutter-version: '3.19.0' # หรือระบุเวอร์ชันที่คุณใช้
+          channel: 'stable'
+
+      # 2. Get dependencies
+      - run: flutter pub get
+
+      # 3. Build APK (แบบ debug จะผ่านง่ายกว่าสำหรับการส่งงาน)
+      - run: flutter build apk --debug
+
+      # 4. สร้าง Release และอัปโหลดไฟล์
+      - name: Create Release
+        uses: softprops/action-gh-release@v1
+        with:
+          tag_name: ${{ github.ref_name }}
+          name: Developed by sutee-f ${{ github.ref_name }}
+          files: build/app/outputs/flutter-apk/app-debug.apk
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
