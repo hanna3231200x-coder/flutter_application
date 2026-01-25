@@ -1,34 +1,35 @@
-name: Build and Release APK
+name: Build Flutter APK
 
 on:
   push:
-    tags:
-      - 'v*'
+    branches:
+      - main  # เมื่อ push ขึ้น main ระบบจะทำงานทันที
 
 jobs:
   build:
     runs-on: ubuntu-latest
-    steps:
-      - uses: actions/checkout@v4
 
-      # 1. ติดตั้ง Flutter
-      - uses: subosito/flutter-action@v2
+    steps:
+      - name: Checkout source
+        uses: actions/checkout@v4
+
+      - name: Set up Flutter
+        uses: subosito/flutter-action@v2
         with:
-          flutter-version: '3.19.0' # หรือระบุเวอร์ชันที่คุณใช้
+          flutter-version: '3.19.0'
           channel: 'stable'
 
-      # 2. Get dependencies
-      - run: flutter pub get
+      - name: Install dependencies
+        run: flutter pub get
 
-      # 3. Build APK (แบบ debug จะผ่านง่ายกว่าสำหรับการส่งงาน)
-      - run: flutter build apk --debug
+      - name: Build APK (Release)
+        # เพิ่มการแสดงชื่อผู้พัฒนาใน Log เพื่อยืนยันตัวตน
+        run: |
+          echo "Developing by sutee-f"
+          flutter build apk --release
 
-      # 4. สร้าง Release และอัปโหลดไฟล์
-      - name: Create Release
-        uses: softprops/action-gh-release@v1
+      - name: Upload APK
+        uses: actions/upload-artifact@v4
         with:
-          tag_name: ${{ github.ref_name }}
-          name: Developed by sutee-f ${{ github.ref_name }}
-          files: build/app/outputs/flutter-apk/app-debug.apk
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          name: app-release-sutee-f  # เปลี่ยนชื่อไฟล์ให้ระบุตัวตนได้ชัดเจน
+          path: build/app/outputs/flutter-apk/app-release.apk
