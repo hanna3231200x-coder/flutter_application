@@ -9,8 +9,10 @@ environment:
 dependencies:
   flutter:
     sdk: flutter
-
-  # เวอร์ชันที่เสถียรและไม่ตีกันแน่นอน
+  # เพิ่ม Library ที่จำเป็น
+  firebase_core: any
+  cloud_firestore: any
+  cupertino_icons: ^1.0.6
   http: ^1.1.0
   url_launcher: ^6.1.11
   video_player: ^2.7.2
@@ -19,19 +21,11 @@ dependencies:
   geolocator: ^10.1.0
   flutter_map: ^6.1.0
   latlong2: ^0.9.0
-  firebase_core: ^3.10.1
-  cloud_firestore: ^5.6.2
-  
-  # ปิด Firebase ไว้ก่อน (ใส่ # ข้างหน้า) จนกว่าจะส่งงานเสร็จ 
-  # เพราะบน GitHub ไม่มีไฟล์ google-services.json มันเลยทำให้ Actions แดงครับ
-  # firebase_core: ^2.24.2
-  # cloud_firestore: ^4.14.0
 
 dev_dependencies:
   flutter_test:
     sdk: flutter
   flutter_lints: ^3.0.0
-  flutter_launcher_icons: ^0.13.1
 
 flutter:
   uses-material-design: true
