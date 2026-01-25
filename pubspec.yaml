@@ -9,39 +9,30 @@ environment:
 dependencies:
   flutter:
     sdk: flutter
-  # เพิ่ม Library ที่จำเป็น
   firebase_core: any
   cloud_firestore: any
   cupertino_icons: ^1.0.6
-  http: ^1.1.0
-  url_launcher: ^6.1.11
-  video_player: ^2.7.2
-  youtube_player_flutter: ^8.1.2
-  geocoding: ^2.1.1
-  geolocator: ^10.1.0
-  flutter_map: ^6.1.0
-  latlong2: ^0.9.0
+  http: any
+  url_launcher: any
+  video_player: any
+  youtube_player_flutter: any
+  geocoding: any
+  geolocator: any
+  flutter_map: any
+  latlong2: any
 
 dev_dependencies:
   flutter_test:
     sdk: flutter
   flutter_lints: ^3.0.0
+  flutter_launcher_icons: ^0.13.1
 
 flutter:
   uses-material-design: true
-  
-  # การเรียกใช้ Assets ต้องมั่นใจว่ามีโฟลเดอร์ชื่อ assets และมีไฟล์รูปอยู่จริงในเครื่อง
   assets:
-    - assets/01.png
-    - assets/02.jpg
-    - assets/03.jpg
-    - assets/04.jpg
-    - assets/05.jpg
-    - assets/06.jpg
-    - assets/07.jpg
-    - assets/heart.png
+    - assets/
 
-# ตั้งค่าไอคอนแอป
+# ตั้งค่าไอคอนแอป (ต้องมั่นใจว่ามีไฟล์ assets/heart.png อยู่จริง)
 flutter_icons:
   android: true
   ios: true

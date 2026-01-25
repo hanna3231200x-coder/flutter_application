@@ -10,17 +10,22 @@ jobs:
       - name: Checkout source
         uses: actions/checkout@v4
 
+      - name: Set up Java 17
+        uses: actions/setup-java@v3
+        with:
+          java-version: '17'
+          distribution: 'temurin'
+
       - name: Set up Flutter
         uses: subosito/flutter-action@v2
         with:
           channel: 'stable'
 
       - name: Install dependencies
-        # บรรทัดนี้จะไปโหลด firebase และอื่นๆ มาให้เองอัตโนมัติบน GitHub
         run: flutter pub get
 
       - name: Build APK
-        # เพิ่ม --debug เพื่อให้ Build ผ่านง่ายขึ้นสำหรับส่งงาน
+        # ใช้ debug เพื่อให้ผ่านง่ายที่สุดสำหรับการส่งงาน
         run: flutter build apk --debug --no-tree-shake-icons
 
       - name: Upload APK
